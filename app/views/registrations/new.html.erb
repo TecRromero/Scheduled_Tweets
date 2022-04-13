@@ -1,0 +1,31 @@
+<h1>Registrations#new</h1>
+<p>Find me in app/views/registrations/new.html.erb</p>
+
+
+<%= form_with model: @user,  url: registrations_new_path do |form| %>
+    <% if @user.errors.any? %>
+        <div class= "alert alert-danger">
+             <% @user.errors.full.messages do |message| %>
+        <div> 
+            <%= message %>
+        </div>
+        <% end %>
+        </div>
+    <% end %>
+
+    <div class="mb-3" >
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control", placeholder: "Morty@rick.com"%>
+    </div>
+    <div class="mb-3" >
+         <%= form.label :password %>
+         <%= form.password_field :password, class: "form-control", placeholder: "password" %>
+    </div>
+    <div class="mb-3" >
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
+    </div>
+    <div class="mb-3">
+    <%= form.submit "Sign up", class: "btn btn-info"%>
+    </div>
+<% end %>
